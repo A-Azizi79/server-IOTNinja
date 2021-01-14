@@ -1,0 +1,30 @@
+{
+  "name": "server-iotninja",
+  "version": "1.0.0",
+  "description": "IOTNinja server side, handle connections between devices.",
+  "main": "./dist/server.js",
+  "scripts": {
+    "test": "ts-node ./lib/server.ts",
+    "dev": "tsc && nodemon ./dist/server.js",
+    "prod": "tsc && nodemon ./dist/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/A-Azizi79/server-IOTNinja.git"
+  },
+  "author": "Ali Azizi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/A-Azizi79/server-IOTNinja/issues"
+  },
+  "homepage": "https://github.com/A-Azizi79/server-IOTNinja#readme",
+  "dependencies": {
+    "@types/express": "^4.17.11",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.11.11",
+    "nodemon": "^2.0.7",
+    "socket.io": "^3.0.5"
+  }
+
+}

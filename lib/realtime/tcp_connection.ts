@@ -1,6 +1,6 @@
 import {Socket, Server as IOServer, Server} from "socket.io";
 import {Connection} from "./utils/connection";
-import { ConnectionLoader} from "./utils/connection_rules";
+import {ConnectionLoader} from "./utils/connection_rules";
 
 
 export class TcpConnection implements ConnectionLoader<IOServer> {
@@ -10,17 +10,15 @@ export class TcpConnection implements ConnectionLoader<IOServer> {
             (cli) => {
                 connection.onConnection(cli.id);
 
-                cli.on("authenticate", ()=>{
+                cli.on("authenticate", () => {
                     connection.authentication("");
-                    cli.emit("reply", )
+                    cli.emit("reply",)
                 });
 
-                cli.on("disconnect", ()=>{
+                cli.on("disconnect", () => {
                     connection.onDisconnect()
                 });
             }
-
-
         )
     }
 }

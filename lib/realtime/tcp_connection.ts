@@ -1,9 +1,9 @@
-import {Socket, Server as IOServer, Server} from "socket.io";
+import {Socket, Server} from "socket.io";
 import {Connection} from "./utils/connection";
 import {ConnectionLoader} from "./utils/connection_rules";
 
 
-export class TcpConnection implements ConnectionLoader<IOServer> {
+export class TcpConnection implements ConnectionLoader<Server> {
     load(server: Server, connection: Connection): void {
         server.on(
             "connection",

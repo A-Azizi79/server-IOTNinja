@@ -1,7 +1,7 @@
 import {Socket, Server} from "socket.io";
 import {Connection} from "./utils/connection";
 import {ConnectionLoader} from "./utils/connection_rules";
-
+import * as keys from "./utils/keywords"
 
 export class TcpConnection implements ConnectionLoader<Server> {
     load(server: Server, connection: Connection): void {
@@ -10,7 +10,7 @@ export class TcpConnection implements ConnectionLoader<Server> {
             (cli) => {
                 connection.onConnection(cli.id);
 
-                cli.on("authenticate", () => {
+                cli.on(keys.AUTHENTICATION, () => {
                     connection.authentication("");
                     cli.emit("reply",)
                 });

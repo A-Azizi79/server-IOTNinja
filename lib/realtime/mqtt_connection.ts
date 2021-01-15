@@ -1,6 +1,6 @@
 import {ConnectionLoader} from "./utils/connection_rules";
 import {Connection} from "./utils/connection";
-import {Server} from "mosca"
+import {Client, Server} from "mosca"
 import * as keys from "./utils/keywords";
 
 export class MqttConnection implements ConnectionLoader<Server> {
@@ -12,10 +12,22 @@ export class MqttConnection implements ConnectionLoader<Server> {
         server.on('published', (packet, client) => {
             switch (packet.topic) {
                 case keys.AUTHENTICATION:
-                    connection.authentication(packet.payload.toString());
+                    const isValidCli = connection.authentication(packet.payload.toString());
+                    this.kickUserIfNotValid(client, isValidCli);
                     break;
             }
         });
 
     }
+
+    kickUserIfNotValid(client: Client, isValid: Boolean): void {
+        if (!isValid) {
+            client.close(() => {
+
+            });
+        }
+    }
+
 }
+
+

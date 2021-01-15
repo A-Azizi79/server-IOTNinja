@@ -3,7 +3,7 @@ export interface Connection {
 
     onDisconnect(): void
 
-    authentication(token : String): void
+    authentication(token : String): Boolean
 }
 
 
